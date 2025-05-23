@@ -4,7 +4,7 @@ import com.giffing.bucket4j.spring.boot.starter.context.ExpressionParams;
 import com.giffing.bucket4j.spring.boot.starter.context.RateLimitConditionMatchingStrategy;
 import com.giffing.bucket4j.spring.boot.starter.context.RateLimitResult;
 import com.giffing.bucket4j.spring.boot.starter.context.properties.FilterConfiguration;
-import com.giffing.bucket4j.spring.boot.starter.filter.servlet.ServletRateLimiterFilter;
+import com.giffing.bucket4j.spring.boot.starter.filter.servlet.ServletRateLimitFilter;
 import com.giffing.bucket4j.spring.boot.starter.service.RateLimitService;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
@@ -23,13 +23,13 @@ import java.util.concurrent.TimeUnit;
  */
 @Setter
 @Slf4j
-public class DefaultServletRateLimiterFilter
+public class DefaultServletRateLimitFilter
         extends OncePerRequestFilter
-        implements ServletRateLimiterFilter {
+        implements ServletRateLimitFilter {
 
     private FilterConfiguration<HttpServletRequest, HttpServletResponse> filterConfig;
 
-    public DefaultServletRateLimiterFilter(FilterConfiguration<HttpServletRequest, HttpServletResponse> filterConfig) {
+    public DefaultServletRateLimitFilter(FilterConfiguration<HttpServletRequest, HttpServletResponse> filterConfig) {
         this.filterConfig = filterConfig;
     }
 

@@ -24,14 +24,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.giffing.bucket4j.spring.boot.starter.context.RateLimitCheck;
 import com.giffing.bucket4j.spring.boot.starter.context.RateLimitConditionMatchingStrategy;
 import com.giffing.bucket4j.spring.boot.starter.context.properties.FilterConfiguration;
-import com.giffing.bucket4j.spring.boot.starter.filter.servlet.impl.DefaultServletRateLimiterFilter;
+import com.giffing.bucket4j.spring.boot.starter.filter.servlet.impl.DefaultServletRateLimitFilter;
 
 import jakarta.servlet.http.HttpServletRequest;
 
 @ExtendWith(MockitoExtension.class) 
 class DefaultServletRateLimitFilterTest {
 
-	private DefaultServletRateLimiterFilter filter;
+	private DefaultServletRateLimitFilter filter;
 	private FilterConfiguration<HttpServletRequest, HttpServletResponse> configuration;
 	@Mock private RateLimitCheck<HttpServletRequest> rateLimitCheck1;
 	@Mock private RateLimitCheck<HttpServletRequest> rateLimitCheck2;
@@ -50,7 +50,7 @@ class DefaultServletRateLimitFilterTest {
         configuration.setRateLimitChecks(Arrays.asList(rateLimitCheck1, rateLimitCheck2, rateLimitCheck3));
         configuration.setUrl(".*");
         configuration.setHttpResponseHeaders(Map.of());
-        filter = new DefaultServletRateLimiterFilter(configuration);
+        filter = new DefaultServletRateLimitFilter(configuration);
     }
 	
 	@Test

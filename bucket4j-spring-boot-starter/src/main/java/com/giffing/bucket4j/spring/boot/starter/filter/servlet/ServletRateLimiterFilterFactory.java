@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public interface ServletRateLimiterFilterFactory {
 
-    ServletRateLimiterFilter create(
+    ServletRateLimitFilter create(
             FilterConfiguration<HttpServletRequest, HttpServletResponse> filterConfig);
 
 }

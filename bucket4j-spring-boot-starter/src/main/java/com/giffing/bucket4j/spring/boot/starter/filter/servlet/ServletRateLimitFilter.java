@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.core.Ordered;
 
-public interface ServletRateLimiterFilter extends Filter, Ordered {
+public interface ServletRateLimitFilter extends Filter, Ordered {
 
     void setFilterConfig(FilterConfiguration<HttpServletRequest, HttpServletResponse> filterConfig);
 

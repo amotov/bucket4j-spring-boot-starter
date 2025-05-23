@@ -16,7 +16,7 @@ import com.giffing.bucket4j.spring.boot.starter.context.metrics.MetricHandler;
 import com.giffing.bucket4j.spring.boot.starter.context.properties.Bucket4JBootProperties;
 import com.giffing.bucket4j.spring.boot.starter.context.properties.Bucket4JConfiguration;
 import com.giffing.bucket4j.spring.boot.starter.filter.servlet.ServletRateLimiterFilterFactory;
-import com.giffing.bucket4j.spring.boot.starter.filter.servlet.ServletRateLimiterFilter;
+import com.giffing.bucket4j.spring.boot.starter.filter.servlet.ServletRateLimitFilter;
 import com.giffing.bucket4j.spring.boot.starter.service.RateLimitService;
 import jakarta.servlet.Filter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -109,7 +109,7 @@ public class Bucket4JAutoConfigurationServletFilter extends Bucket4JBaseConfigur
                     var beanName = filter.getId() != null ? filter.getId() : ("bucket4JServletRequestFilter" + filterCount);
                     context.registerBean(
                             beanName,
-                            ServletRateLimiterFilter.class,
+                            ServletRateLimitFilter.class,
                             () -> servletRateLimiterFilterFactory.create(filterConfig));
 
                     log.info("create-servlet-filter;{};{};{}", filterCount, filter.getCacheName(), filter.getUrl());
@@ -122,7 +122,7 @@ public class Bucket4JAutoConfigurationServletFilter extends Bucket4JBaseConfigur
         Bucket4JConfiguration newConfig = event.getNewValue();
         if (newConfig.getFilterMethod().equals(FilterMethod.SERVLET)) {
             try {
-                var filter = context.getBean(event.getKey(), ServletRateLimiterFilter.class);
+                var filter = context.getBean(event.getKey(), ServletRateLimitFilter.class);
                 var newFilterConfig = buildFilterConfig(newConfig, cacheResolver.resolve(newConfig.getCacheName()));
                 filter.setFilterConfig(newFilterConfig);
             } catch (Exception exception) {

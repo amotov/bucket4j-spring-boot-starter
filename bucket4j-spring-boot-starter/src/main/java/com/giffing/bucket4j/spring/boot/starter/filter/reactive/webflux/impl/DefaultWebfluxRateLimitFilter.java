@@ -1,6 +1,6 @@
 package com.giffing.bucket4j.spring.boot.starter.filter.reactive.webflux.impl;
 
-import com.giffing.bucket4j.spring.boot.starter.filter.reactive.webflux.WebfluxRateLimiterFilter;
+import com.giffing.bucket4j.spring.boot.starter.filter.reactive.webflux.WebfluxRateLimitFilter;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.web.server.ServerWebExchange;
@@ -11,11 +11,11 @@ import com.giffing.bucket4j.spring.boot.starter.filter.reactive.AbstractReactive
 
 import reactor.core.publisher.Mono;
 
-public class DefaultWebfluxRateLimiterFilter
+public class DefaultWebfluxRateLimitFilter
 		extends AbstractReactiveFilter
-		implements WebfluxRateLimiterFilter {
+		implements WebfluxRateLimitFilter {
 
-	public DefaultWebfluxRateLimiterFilter(FilterConfiguration<ServerHttpRequest, ServerHttpResponse> filterConfig) {
+	public DefaultWebfluxRateLimitFilter(FilterConfiguration<ServerHttpRequest, ServerHttpResponse> filterConfig) {
 		super(filterConfig);
 	}
 

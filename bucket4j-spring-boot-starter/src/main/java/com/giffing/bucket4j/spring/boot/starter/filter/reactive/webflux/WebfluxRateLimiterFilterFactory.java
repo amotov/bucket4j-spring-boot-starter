@@ -6,7 +6,7 @@ import org.springframework.http.server.reactive.ServerHttpResponse;
 
 public interface WebfluxRateLimiterFilterFactory {
 
-    WebfluxRateLimiterFilter create(
+    WebfluxRateLimitFilter create(
             FilterConfiguration<ServerHttpRequest, ServerHttpResponse> filterConfig);
 
 }

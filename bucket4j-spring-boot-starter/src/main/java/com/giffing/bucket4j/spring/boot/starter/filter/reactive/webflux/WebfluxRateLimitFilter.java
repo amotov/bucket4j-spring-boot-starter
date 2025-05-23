@@ -6,7 +6,7 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.web.server.WebFilter;
 
-public interface WebfluxRateLimiterFilter extends WebFilter, Ordered {
+public interface WebfluxRateLimitFilter extends WebFilter, Ordered {
 
 	void setFilterConfig(
 			FilterConfiguration<ServerHttpRequest, ServerHttpResponse> filterConfig);
