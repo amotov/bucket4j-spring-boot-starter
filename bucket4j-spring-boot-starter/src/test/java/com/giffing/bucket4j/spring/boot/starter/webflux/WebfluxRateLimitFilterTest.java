@@ -72,7 +72,8 @@ class WebfluxRateLimitFilterTest {
 		configuration.setPostRateLimitChecks(
 				Collections.singletonList(
 						postRateLimitCheck));
-		configuration.setUrl(".*");
+        configuration.setUrlPatternMatcher(
+                UrlPatternMatcher.ALLOW_MATCHER);
 		filter = new DefaultWebfluxRateLimitFilter(configuration);
 	}
 
@@ -212,7 +213,7 @@ class WebfluxRateLimitFilterTest {
 
 		when(consumptionHolder.getRateLimitResultCompletableFuture())
 				.thenAnswer(invocation -> result.toFuture());
-		when(rateLimitCheck.rateLimit(any(), any())).thenReturn(consumptionHolder);
+		when(rateLimitCheck.rateLimit(any(), any(), any())).thenReturn(consumptionHolder);
 	}
 
 	private RateLimitResult createRateLimitResult(
