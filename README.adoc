@@ -1,7 +1,7 @@
 :url-repo: https://github.com/MarcGiffing/bucket4j-spring-boot-starter
 :url: https://github.com/MarcGiffing/bucket4j-spring-boot-starter/tree/master
 :url-examples: {url}/examples
-:url-config-cache: {url}/com/giffing/bucket4j/spring/boot/starter/config/cache
+:url-config-cache: {url}/bucket4j-spring-boot-starter/src/main/java/com/giffing/bucket4j/spring/boot/starter/config/cache
 
 image:{url-repo}/actions/workflows/maven.yml/badge.svg[Build Status,link={url-repo}/actions/workflows/maven.yml]
 image:{url-repo}/actions/workflows/codeql.yml/badge.svg[Build Status,link={url-repo}/actions/workflows/codeql.yml]
@@ -9,11 +9,10 @@ image:{url-repo}/actions/workflows/pmd.yml/badge.svg[Build Status,link={url-repo
 
 Project version overview:
 
+* > 0.13.0 - Bucket4j 8.14.x - Spring Boot 3.5.x - Bucket4j Deps have _jdk17 in the artifactId
 * > 0.12.9 - Bucket4j 8.10.x - Spring Boot 3.4.x
 * > 0.12.8 - Bucket4j 8.10.x - Spring Boot 3.3.x
 * <= 0.12.7 - Bucket4j 8.9.0 - Spring Boot 3.2.x
-* 0.11.x - Bucket4j 8.8.0 - Spring Boot 3.2.x
-* 0.10.x - Bucket4j 8.7.0 - Spring Boot 3.1.x
 
 [[table_of_contents]]
 == Table of Contents
@@ -707,7 +706,7 @@ The following list contains the Caching implementation which will be autoconfigu
 |redis-lettuce
 
 |Yes
-|{url-config-cache}/redis/redission/RedissonBucket4jConfiguration.java[Redis-Redisson]
+|{url-config-cache}/redis/redisson/RedissonBucket4jConfiguration.java[Redis-Redisson]
 |redis-redisson
 
 |===
@@ -833,7 +832,7 @@ https://mvnrepository.com/artifact/com.giffing.bucket4j.spring.boot.starter/buck
 [source,xml]
 ----
 <dependency>
-    <groupId>com.giffing.bucket4j</groupId>
+    <groupId>com.giffing.bucket4j.spring.boot.starter</groupId>
     <artifactId>bucket4j-spring-boot-starter</artifactId>
     <version>${version}</version>
 </dependency>

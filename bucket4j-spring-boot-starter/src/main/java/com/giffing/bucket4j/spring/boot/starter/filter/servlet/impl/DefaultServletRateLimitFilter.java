@@ -1,9 +1,10 @@
-package com.giffing.bucket4j.spring.boot.starter.filter.servlet;
+package com.giffing.bucket4j.spring.boot.starter.filter.servlet.impl;
 
 import com.giffing.bucket4j.spring.boot.starter.context.ExpressionParams;
 import com.giffing.bucket4j.spring.boot.starter.context.RateLimitConditionMatchingStrategy;
 import com.giffing.bucket4j.spring.boot.starter.context.RateLimitResult;
 import com.giffing.bucket4j.spring.boot.starter.context.properties.FilterConfiguration;
+import com.giffing.bucket4j.spring.boot.starter.filter.servlet.ServletRateLimitFilter;
 import com.giffing.bucket4j.spring.boot.starter.service.RateLimitService;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
@@ -12,7 +13,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.Ordered;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
@@ -24,13 +24,15 @@ import java.util.concurrent.TimeUnit;
  */
 @Setter
 @Slf4j
-public class ServletRequestFilter extends OncePerRequestFilter implements Ordered {
+public class DefaultServletRateLimitFilter
+        extends OncePerRequestFilter
+        implements ServletRateLimitFilter {
 
     protected String ATTRIBUTE_URL_VARIABLES = "urlVariables";
 
     private FilterConfiguration<HttpServletRequest, HttpServletResponse> filterConfig;
 
-    public ServletRequestFilter(FilterConfiguration<HttpServletRequest, HttpServletResponse> filterConfig) {
+    public DefaultServletRateLimitFilter(FilterConfiguration<HttpServletRequest, HttpServletResponse> filterConfig) {
         this.filterConfig = filterConfig;
     }
 

@@ -12,7 +12,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.5</version>
+		<version>3.5.6</version>
 		<relativePath />
 	</parent>
 	<modules>
@@ -43,12 +43,12 @@
 		<tag>bucket4j-spring-boot-starter-parent-0.3.4</tag>
 	</scm>
 	<properties>
-		<revision>0.12.9</revision>
+		<revision>0.13.0</revision>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>17</java.version>
-		<bucket4j.version>8.10.1</bucket4j.version>
-		<spring-cloud-starter-gateway.version>4.2.2</spring-cloud-starter-gateway.version>
+		<bucket4j.version>8.14.0</bucket4j.version>
+		<spring-cloud-starter-gateway.version>4.3.0</spring-cloud-starter-gateway.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -69,32 +69,52 @@
 			</dependency>
 			<dependency>
 				<groupId>com.bucket4j</groupId>
-				<artifactId>bucket4j-core</artifactId>
+				<artifactId>bucket4j_jdk17-core</artifactId>
 				<version>${bucket4j.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.bucket4j</groupId>
-				<artifactId>bucket4j-jcache</artifactId>
+				<artifactId>bucket4j_jdk17-jcache</artifactId>
 				<version>${bucket4j.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.bucket4j</groupId>
-				<artifactId>bucket4j-hazelcast</artifactId>
+				<artifactId>bucket4j_jdk17-hazelcast</artifactId>
 				<version>${bucket4j.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.bucket4j</groupId>
-				<artifactId>bucket4j-redis</artifactId>
+				<artifactId>bucket4j_jdk17-redis-common</artifactId>
 				<version>${bucket4j.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.bucket4j</groupId>
-				<artifactId>bucket4j-ignite</artifactId>
+				<artifactId>bucket4j_jdk17-jedis</artifactId>
 				<version>${bucket4j.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.bucket4j</groupId>
-				<artifactId>bucket4j-infinispan</artifactId>
+				<artifactId>bucket4j_jdk17-redis</artifactId>
+				<version>${bucket4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.bucket4j</groupId>
+				<artifactId>bucket4j_jdk17-redisson</artifactId>
+				<version>${bucket4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.bucket4j</groupId>
+				<artifactId>bucket4j_jdk17-lettuce</artifactId>
+				<version>${bucket4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.bucket4j</groupId>
+				<artifactId>bucket4j_jdk17-ignite</artifactId>
+				<version>${bucket4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.bucket4j</groupId>
+				<artifactId>bucket4j_jdk17-infinispan</artifactId>
 				<version>${bucket4j.version}</version>
 			</dependency>
 		</dependencies>
@@ -133,22 +153,22 @@
 				<extensions>true</extensions>
 				<configuration>
 					<serverId>ossrh</serverId>
-					<nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+					<nexusUrl>https://ossrh-staging-api.central.sonatype.com</nexusUrl>
 					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-		<repository>
-			<id>ossrh</id>
-			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-	</distributionManagement>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 	<profiles>
 		<profile>
 			<id>deploy</id>
@@ -161,7 +181,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>3.2.7</version>
+						<version>3.2.8</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
